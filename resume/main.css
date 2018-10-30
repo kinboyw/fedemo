@@ -1,6 +1,6 @@
 body{
-    background: #000;
-    color:white;
+    background: #EFEFEF;
+    margin:0;
 }
 a{
     color:inherit;
@@ -11,16 +11,19 @@ a{
     display:block;
     clear:both;
 }
-.topNavBar>nav>ul{
+.topNavBar nav{
+    float:right;
+}
+.topNavBar nav>ul{
     list-style:none;
     margin:0;
     padding:0;
 }
-.topNavBar>nav>ul>li{
+.topNavBar nav>ul>li{
     float:left;
     margin-left:35px;
 }
-.topNavBar>nav>ul>li>a{
+.topNavBar nav>ul>li>a{
     font-size:13px;
     color:rgba(255, 255, 255, 0.7);
     text-decoration:none;
@@ -30,17 +33,23 @@ a{
     padding: 8px 5px;
     display:block;
 }
-.topNavBar>nav>ul>li>a:hover{
+.topNavBar nav>ul>li>a:hover{
     border-bottom:3px solid rgb(232,103,107);
 }
 .topNavBar{
     margin-top:25px;
-    margin-right:342px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+}
+.topNavBar-inner{
+    padding:0 199px 0 199px;
 }
 .logo{
+    float:left;
     font-size:30px;
     font-family: "微软雅黑";
-    margin-left:199px;
 }
 .topNavBar .logo .rs{
     color:rgb(232,103,107);
@@ -49,4 +58,31 @@ a{
 
 .topNavBar .logo .card{
     color:#9a9da2;
+}
+.banner{
+    height:515px;
+    background-image:url(./img/rs-cover.jpg);
+    background-position: center center;
+    background-size: cover;
+}
+.banner .mask{
+    height:515px;
+    background-color:rgba(44, 51, 64, 0.8);
+}
+.userCard{
+    border:1px solid red;
+    max-width:940px;
+    margin-right:auto;
+    margin-left:auto;
+    background-color:#FFFF;
+    position:relative;
+    top:-347px;
+}
+.userCard .welcome{
+    background-color:#e8676b;
+    font-size:14px;
+    font-weight: 700;
+    line-height:1.1;
+    display:inline-block;
+    padding:7px 12px;
 }
