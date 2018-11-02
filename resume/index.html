@@ -44,14 +44,14 @@
     <div class="userCard">
       <div class="pictureAndText clearfix">
         <div class="picture">
-        <img src="./img/avatar.jpg"style="width:299px;height:347px;" alt="头像">
+        <img src="./img/avatar.jpg"style="width:295;height:318px;" alt="头像">
       </div>
       <div class="text">
-        <span class="welcome">Hello
+        <span class="welcome">HELLO
         <span class="triangle"></span>
         </span>
-        <h1>王进波</h1>
-        <p>前端开发工程师 | Linux 运维</p>
+        <h1>皮卡丘</h1>
+        <p>主业睡觉 | 副业吃饭</p>
         <hr>
         <dl>
           <dt>年龄</dt>
@@ -104,43 +104,114 @@
         </a>
       </footer>
     </div>
-    <a href="#" class="button">下载PDF简历</a>
-    <p>
+    <a href="./resume.pdf" class="download">下载 PDF 简历</a>
+    <p class="introduction">
       Hello! I’m Robert Smith. Senior Web Developer specializing in front end development. Experienced with all stages
       of the development cycle for dynamic web projects. Well-versed in numerous programming languages including
       JavaScript, SQL, and C. Stng background in project management and customer relations.
     </p>
   </main>
-  <main>
-    <section>
+    <section class="skills">
       <h2>
-        技能
+        酷炫技能
       </h2>
-      <ol>
-        <li>HTML5 & CSS3</li>
-        <li>JavaScript</li>
-        <li>jQuery</li>
-        <li>Vue</li>
-        <li>React</li>
-        <li>HTTP</li>
+      <ol class="clearfix">
+        <li>
+          <h3>
+            HTML5 & CSS3
+          </h3>
+            <div class="progressBar">
+              <div class="progress" style="width:70%"></div>
+            </div>
+        </li>
+        <li>
+          <h3>
+            JavaScript
+          </h3>
+            <div class="progressBar">
+              <div class="progress" style="width:50%"></div>
+            </div>
+        </li>
+        <li>
+          <h3>
+            NodeJs
+          </h3>
+            <div class="progressBar">
+              <div class="progress" style="width:40%"></div>
+            </div>
+        </li>
+        <li>
+          <h3>
+            Vue & React
+          </h3>
+            <div class="progressBar">
+              <div class="progress" style="width:95%"></div>
+            </div>
+        </li>
+        <li>
+          <h3>
+            Angular
+          </h3>
+            <div class="progressBar">
+              <div class="progress" style="width:80%"></div>
+            </div>
+        </li>
+        <li>
+          <h3>
+            HTTP
+          </h3>
+            <div class="progressBar">
+              <div class="progress" style="width:70%"></div>
+            </div>
+        </li>
       </ol>
     </section>
-    <section>
+    <section class="portfolio">
       <h2>作品集</h2>
       <nav>
-        <ol>
-          <li>所有</li>
-          <li>框架</li>
-          <li>原生JS&CSS</li>
+        <ol class="clearfix">
+          <li id="prop1">所有</li>
+          <li id="prop2">框架</li>
+          <li id="prop3">原生JS&CSS</li>
         </ol>
+        <div id="portfolioBar" class="bar state1">
+          <div class="bar-inner"></div>
+        </div>
       </nav>
-      <div class="jobs">
-        <div class="big"></div>
-        <div class="small"></div>
-        <div class="small"></div>
+      <script>
+        prop1.onclick=function(){
+          portfolioBar.className = "bar state1"
+        }
+        prop2.onclick=function(){
+          portfolioBar.className = "bar state2"
+        }
+        prop3.onclick=function(){
+          portfolioBar.className = "bar state3"
+        }
+      </script>
+      <div class="works">
+        <div class="big square" style="width:600px;height:567px;background-image:url('img/port1.jpg')">
+          <div class="subtitle">
+              <img src="./img/jquery.png" alt="jquery.logo">
+              <h2 class="title">Dreams Visualization</h2>
+              <span class="alias">phtography</span>
+          </div>
+        </div>
+        <div class="small square" style="top:0;left:624px;width:290px;height:275px;background-image: url('img/port2.jpg');">
+          <div class="subtitle">
+              <h2 class="title">time is chronos</h2>
+              <span class="alias">phtography | ux design</span>
+          </div>
+        </div>
+        <div class="small square" style="top:292px;left:624px;width:290px;height:275px;background-image: url('img/port3.png');">
+          <div class="subtitle">
+              <h2 class="title">office selection</h2>
+              <span class="alias">ux | design</span>
+          </div>
+              
+        </div>
       </div>
     </section>
-  </main>
 </body>
 
 </html>
