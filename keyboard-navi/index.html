@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh_Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Keyboard-navi</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <div class="head clearfix">
+       <div class="logo">
+           <h1>
+               <a href="http://kinboy.wang"> </a>
+           </h1>
+        </div>
+        <div class="search">
+           <form name=s >
+           <input type="text" id='q' name='wd' autocomplete='on' value="">
+           <input type="button" class='button' onclick="window.open('http://baidu.com/s?wd='+s.wd.value,'')" value=百度一下>
+           <input type="button" class='button' onclick="window.open('http://google.com/search?q='+s.wd.value,'')" value=谷歌搜索>
+           </form> 
+        </div>
+    </div>
+  </header>
+  <main>
+     <div class="wrapper" id="main">
+     </div> 
+  </main>
+  <footer id=footer>
+      <div class="footer-wrapper">
+          <p>
+              特别推荐站点
+              <a target="blank" href="http://www.baidu.com">百度</a>
+              <a target="blank" href="http://www.google.com">谷歌</a>
+              <a target="blank" href="http://www.youtube.com">YouTube</a>
+          </p>
+          <span class=copyright>♥Enthusiastically Assembled by 
+              <a target="blank" href="http://kinboy.wang">Kinboy</a></span> without you.
+      </div>
+  </footer>  
+</body>
+<script>
+    let keys = {
+        '0':['q','w','e','r','t','y','u','i','o','p'],
+        '1':['a','s','d','f','g','h','j','k','l'],
+        '2':['z','x','c','v','b','n','m'],
+        'length':3
+    }
+    var hash = {
+        'q':'','w':'','e':'','r':'', 't':'','y':'', 'u':'', 'i':'', 'o':'', 'p':''
+    }
+    for(let index = 0;index < keys.length;index++){
+        let div = document.createElement('div');
+        let keysindex = keys[index];
+        for(let index2 = 0; index2 < keysindex.length;index2++){
+            let kbd = document.createElement('kbd');
+            kbd.textContent = keysindex[index2];
+            div.appendChild(kbd);
+        }
+        main.appendChild(div);
+
+    }
+</script>
+</html>
