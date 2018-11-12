@@ -12,14 +12,14 @@
     <div class="head clearfix">
        <div class="logo">
            <h1>
-                   <a href="http://kinboy.wang"> </a>
+                <a id='logo_a' href="http://kinboy.wang"> </a>
            </h1>
         </div>
         <div class="search">
-           <form name=search-form >
-           <input type="text" id='q-text' name='wd' autocomplete='on' value="">
-           <input type="button" class='button' onclick="window.open('http://baidu.com/s?wd='+search-form.wd.value,'')" value=百度一下>
-           <input type="button" class='button' onclick="window.open('http://google.com/search?q='+search-form.wd.value,'')" value=谷歌搜索>
+           <form name=searchform >
+           <input type="text" id='q-text' name='wd' onkeyup='logo_up()' onkeydown='logo_down()' autocomplete='on' value="">
+           <input type="button" class='button' onclick="window.open('http://baidu.com/s?wd='+searchform.wd.value,'')" value=百度一下>
+           <input type="button" class='button' onclick="window.open('http://google.com/search?q='+searchform.wd.value,'')" value=谷歌搜索>
            </form> 
         </div>
     </div>
@@ -37,7 +37,7 @@
               <a target="blank" href="http://www.youtube.com">YouTube</a>
           </p>
           <span class=copyright>♥Enthusiastically Assembled by 
-              <a target="blank" href="http://kinboy.wang">Kinboy</a></span> without you.
+              <a target="blank" href="http://kinboy.wang">Kinboy</a></span>.
       </div>
   </footer>  
 </body>
@@ -58,7 +58,15 @@
         'u':'uber.com', 
         'i':'instagram.com', 
         'o':'opera.com', 
-        'p':'pinterest.com'
+        'p':'pinterest.com',
+        'g':'google.com',
+        's':'stackoverflow.com',
+        'm':'medium.com',
+        'b':'baidu.com',
+        'd':'dell.com',
+        'z':'zhihu.com',
+        'f':'facebook.com',
+
     }
     let localhash = JSON.parse(localStorage.getItem('hash') || 'null');
     if(localhash){
@@ -69,7 +77,15 @@
         let keysindex = keys[index];
         for(let index2 = 0; index2 < keysindex.length;index2++){
             let kbd = document.createElement('kbd');
+            kbd.id = "kbd"+keys[index][index2];
             kbd.textContent = keysindex[index2];
+            kbd.onclick = function(key){
+                let id = key.target.id.substr(3);
+                let url = hash[id];
+                if(url){
+                    window.open("http://"+url,"_blank");
+                }
+            }
 
             let edit = document.createElement('button');
             edit.textContent = "E";
@@ -78,6 +94,14 @@
                 let url = prompt('请输入一个网址：');
                 let id = key.target.id;
                 hash[id] = url;
+                let imgid = "img"+id;
+                let img = document.getElementById(imgid);
+                if(!img){
+                    img = document.createElement('img');
+                    img.id = imgid;
+                    kbd.appendChild(img);
+                }
+                img.src = "http://"+url+"/favicon.ico";
                 localStorage.setItem('hash',JSON.stringify(hash));
             }
             kbd.appendChild(edit);
@@ -88,6 +112,9 @@
             del.onclick = function(key){
                 let id = key.target.id.substr(3);
                 hash[id] = "";
+                let imgid = "img"+id;
+                let img = document.getElementById(imgid);
+                img.src = "";
                 localStorage.setItem('hash',JSON.stringify(hash));
             }
             kbd.appendChild(del);
@@ -105,13 +132,20 @@
         main.appendChild(div);
 
     }
-    function toggleLogo(){
-
+    function logo_up(){
+        let logo = document.getElementById('logo_a');
+        logo.classList.toggle('logo_key');
     }
-    function edit(key){
-
+    function logo_down(){
+       let logo = document.getElementById('logo_a');
+       logo.classList.toggle('logo_key'); 
     }
+
     document.onkeypress = function(keypress){
+        let _this = document.activeElement;
+        if(_this.id==="q-text"){
+            return;
+        }
         let key = keypress.key;
         let url = hash[key];
         if(url){
