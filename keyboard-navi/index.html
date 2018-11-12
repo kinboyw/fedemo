@@ -12,14 +12,14 @@
     <div class="head clearfix">
        <div class="logo">
            <h1>
-               <a href="http://kinboy.wang"> </a>
+                   <a href="http://kinboy.wang"> </a>
            </h1>
         </div>
         <div class="search">
-           <form name=s >
-           <input type="text" id='q' name='wd' autocomplete='on' value="">
-           <input type="button" class='button' onclick="window.open('http://baidu.com/s?wd='+s.wd.value,'')" value=百度一下>
-           <input type="button" class='button' onclick="window.open('http://google.com/search?q='+s.wd.value,'')" value=谷歌搜索>
+           <form name=search-form >
+           <input type="text" id='q-text' name='wd' autocomplete='on' value="">
+           <input type="button" class='button' onclick="window.open('http://baidu.com/s?wd='+search-form.wd.value,'')" value=百度一下>
+           <input type="button" class='button' onclick="window.open('http://google.com/search?q='+search-form.wd.value,'')" value=谷歌搜索>
            </form> 
         </div>
     </div>
@@ -49,7 +49,20 @@
         'length':3
     }
     var hash = {
-        'q':'','w':'','e':'','r':'', 't':'','y':'', 'u':'', 'i':'', 'o':'', 'p':''
+        'q':'quora.com',
+        'w':'weibo.com',
+        'e':'ele.me',
+        'r':'renren.com', 
+        't':'twitter.com',
+        'y':'youtube.com', 
+        'u':'uber.com', 
+        'i':'instagram.com', 
+        'o':'opera.com', 
+        'p':'pinterest.com'
+    }
+    let localhash = JSON.parse(localStorage.getItem('hash') || 'null');
+    if(localhash){
+        hash = localhash;
     }
     for(let index = 0;index < keys.length;index++){
         let div = document.createElement('div');
@@ -57,10 +70,53 @@
         for(let index2 = 0; index2 < keysindex.length;index2++){
             let kbd = document.createElement('kbd');
             kbd.textContent = keysindex[index2];
+
+            let edit = document.createElement('button');
+            edit.textContent = "E";
+            edit.id = keys[index][index2];
+            edit.onclick = function(key){
+                let url = prompt('请输入一个网址：');
+                let id = key.target.id;
+                hash[id] = url;
+                localStorage.setItem('hash',JSON.stringify(hash));
+            }
+            kbd.appendChild(edit);
+
+            let del = document.createElement('button');
+            del.textContent = "D";
+            del.id = 'del'+keys[index][index2];
+            del.onclick = function(key){
+                let id = key.target.id.substr(3);
+                hash[id] = "";
+                localStorage.setItem('hash',JSON.stringify(hash));
+            }
+            kbd.appendChild(del);
+            
+            if(hash[keys[index][index2]]){
+                let img = document.createElement('img');
+                img.id = "img"+ keys[index][index2];
+                img.src="http://"+hash[keys[index][index2]]+"/favicon.ico";
+                kbd.appendChild(img);
+            }
+            
+
             div.appendChild(kbd);
         }
         main.appendChild(div);
 
+    }
+    function toggleLogo(){
+
+    }
+    function edit(key){
+
+    }
+    document.onkeypress = function(keypress){
+        let key = keypress.key;
+        let url = hash[key];
+        if(url){
+        window.open("http://"+url);
+        }
     }
 </script>
 </html>
