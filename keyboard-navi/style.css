@@ -45,6 +45,10 @@ header{
     line-height: 10em;
     background: url(./img/logo.png) no-repeat;
 }
+.head>.logo a::after{
+    content:"";
+    background: url(./img/logo2.png) no-repeat;
+}
 .logo_key{
     background:url(./img/logo2.png) no-repeat !important;
 }
