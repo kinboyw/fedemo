@@ -101,7 +101,7 @@
                     img.id = imgid;
                     kbd.appendChild(img);
                 }
-                img.src = "http://"+url+"/favicon.ico";
+                img.src = "https://"+url+"/favicon.ico";
                 localStorage.setItem('hash',JSON.stringify(hash));
             }
             kbd.appendChild(edit);
@@ -122,7 +122,7 @@
             if(hash[keys[index][index2]]){
                 let img = document.createElement('img');
                 img.id = "img"+ keys[index][index2];
-                img.src="http://"+hash[keys[index][index2]]+"/favicon.ico";
+                img.src="https://"+hash[keys[index][index2]]+"/favicon.ico";
                 kbd.appendChild(img);
             }
             
